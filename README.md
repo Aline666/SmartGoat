@@ -1,10 +1,10 @@
-Beispielanwendung "jTodo"
+Anwendung "SmartGoat"
 =========================
 
 Kurzbeschreibung
 ----------------
 
-Dies ist ein Beispiel für eine in Java realisierte, serverseitige MVC-Webanwendung.
+Dies ist eine in Java realisierte, serverseitige MVC-Webanwendung.
 Die Anwendung setzt dabei ganz klassisch auf der „Jakarta Enterprise Edition”
 (ehemals „Java Enterprise Edition“) auf und läuft daher in einem speziell dafür
 ausgelegten Applikationsserver. Sämtliche Anwendungslogik wird dabei vom Server
