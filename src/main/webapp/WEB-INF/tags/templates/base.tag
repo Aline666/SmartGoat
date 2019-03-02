@@ -39,7 +39,7 @@
             <%-- Titelzeile --%>
             <div id="titlebar">
                 <div class="appname">
-                    Smart Goat
+                    Aufgabenliste
                 </div>
                 <div class="content">
                     ${title}
