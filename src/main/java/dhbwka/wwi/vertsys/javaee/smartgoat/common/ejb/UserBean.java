@@ -38,18 +38,21 @@ public class UserBean {
         return this.em.find(User.class, this.ctx.getCallerPrincipal().getName());
     }
 
-    /**
-     *
-     * @param username
-     * @param password
-     * @throws UserBean.UserAlreadyExistsException
-     */
-    public void signup(String username, String password) throws UserAlreadyExistsException {
+    
+     /**
+      *@param firstname
+      *@param lastname
+      *@param username
+      *@param password
+     *@throws UserBean.UserAlreadyExistsException
+     **/
+     
+    public void signup(String firstname, String lastname, String username, String password) throws UserAlreadyExistsException {
         if (em.find(User.class, username) != null) {
             throw new UserAlreadyExistsException("Der Benutzername $B ist bereits vergeben.".replace("$B", username));
         }
 
-        User user = new User(username, password);
+        User user = new User(firstname, lastname, username, password);
         user.addToGroup("app-user");
         em.persist(user);
     }

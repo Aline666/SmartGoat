@@ -41,10 +41,27 @@ public class User implements Serializable {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
     @Id
+    @Column(name = "FIRSTNAME", length = 64)
+    @Size(min = 3, max = 64, message = "Der Vorname muss zwischen drei und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Benutzername darf nicht leer sein.")
+    private String firstname;
+     
+     
+    @Id
+    @Column(name = "LASTNAME", length = 64)
+    @Size(min = 3, max = 64, message = "Der Benutzername muss zwischen drei und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Benutzername darf nicht leer sein.")
+    private String lastname;
+    
+    
+    
+    @Id
     @Column(name = "USERNAME", length = 64)
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
+    
+    
     
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
@@ -68,11 +85,16 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     List<Task> tasks = new ArrayList<>();
 
+    
+    
+    
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String firstname, String lastname, String username, String password) {
+        this.firstname=firstname;
+        this.lastname=lastname;
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);

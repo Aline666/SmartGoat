@@ -33,6 +33,7 @@
             <form action="j_security_check" method="post" class="stacked">
                 <div class="column">
                     <%-- Eingabefelder --%>
+                    
                     <label for="j_username">
                         Benutzername:
                         <span class="required">*</span>
