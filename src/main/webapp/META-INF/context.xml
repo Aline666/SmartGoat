@@ -12,6 +12,8 @@
         userTable="smartgoat.smartgoat_user"
         userNameCol="username" 
         userCredCol="password_hash"
+        userFirstnameCol="firstname"
+        userLastnameCol="lastname"
         
         userRoleTable="smartgoat.smartgoat_user_group" 
         roleNameCol="groupname"         

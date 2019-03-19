@@ -45,6 +45,15 @@ public class User implements Serializable {
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
+    private String firstname;
+    private String lastname;
+
+
+
+
+    public User(String username, String password1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
@@ -72,12 +81,23 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password) {
+    /**
+     *
+     * @param username
+     * @param password
+     * @param firstname
+     * @param lastname
+     */
+    public User(String username, String password, String firstname, String lastname) {
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
+        this.firstname = firstname;
+        this.lastname = lastname;
+
     }
     //</editor-fold>
+
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
     public String getUsername() {
