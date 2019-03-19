@@ -1,5 +1,4 @@
-/*
- * Copyright © 2018 Dennis Schulmeister-Zimolong
+ /* Copyright © 2018 Dennis Schulmeister-Zimolong
  * 
  * E-Mail: dhbw@windows3.de
  * Webseite: https://www.wpvs.de/
@@ -41,27 +40,19 @@ public class User implements Serializable {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
     @Id
-    @Column(name = "FIRSTNAME", length = 64)
-    @Size(min = 3, max = 64, message = "Der Vorname muss zwischen drei und 64 Zeichen lang sein.")
-    @NotNull(message = "Der Vorname darf nicht leer sein.")
-    private String firstname;
-     
-     
-    @Id
-    @Column(name = "LASTNAME", length = 64)
-    @Size(min = 3, max = 64, message = "Der Benutzername muss zwischen drei und 64 Zeichen lang sein.")
-    @NotNull(message = "Der Nachname darf nicht leer sein.")
-    private String lastname;
-    
-    
-    
-    @Id
     @Column(name = "USERNAME", length = 64)
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
+    private String firstname;
+    private String lastname;
 
-    
+
+
+
+    public User(String username, String password1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
@@ -85,12 +76,10 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     List<Task> tasks = new ArrayList<>();
 
-    
-    
-    
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
     }
+
     /**
      *
      * @param username
@@ -98,16 +87,16 @@ public class User implements Serializable {
      * @param firstname
      * @param lastname
      */
-    
     public User(String username, String password, String firstname, String lastname) {
-
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
         this.firstname = firstname;
         this.lastname = lastname;
+
     }
     //</editor-fold>
+
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
     public String getUsername() {

@@ -53,7 +53,7 @@ public class SignUpServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        // Formulareingaben auslesen       
+        // Formulareingaben auslesen  
         String firstname = request.getParameter("signup_firstname");
         String lastname = request.getParameter("signup_lastname");
         String username = request.getParameter("signup_username");
