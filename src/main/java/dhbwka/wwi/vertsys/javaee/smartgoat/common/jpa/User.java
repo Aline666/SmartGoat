@@ -43,14 +43,14 @@ public class User implements Serializable {
     @Id
     @Column(name = "FIRSTNAME", length = 64)
     @Size(min = 3, max = 64, message = "Der Vorname muss zwischen drei und 64 Zeichen lang sein.")
-    @NotNull(message = "Der Benutzername darf nicht leer sein.")
+    @NotNull(message = "Der Vorname darf nicht leer sein.")
     private String firstname;
      
      
     @Id
     @Column(name = "LASTNAME", length = 64)
     @Size(min = 3, max = 64, message = "Der Benutzername muss zwischen drei und 64 Zeichen lang sein.")
-    @NotNull(message = "Der Benutzername darf nicht leer sein.")
+    @NotNull(message = "Der Nachname darf nicht leer sein.")
     private String lastname;
     
     
@@ -60,7 +60,7 @@ public class User implements Serializable {
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
-    
+
     
     
     public class Password {
@@ -91,13 +91,21 @@ public class User implements Serializable {
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
     }
+    /**
+     *
+     * @param username
+     * @param password
+     * @param firstname
+     * @param lastname
+     */
+    
+    public User(String username, String password, String firstname, String lastname) {
 
-    public User(String firstname, String lastname, String username, String password) {
-        this.firstname=firstname;
-        this.lastname=lastname;
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
     //</editor-fold>
 
