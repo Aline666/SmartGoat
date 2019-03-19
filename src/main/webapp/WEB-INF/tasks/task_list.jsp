@@ -14,6 +14,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <template:base>
+    
     <jsp:attribute name="title">
         Liste der Aufgaben
     </jsp:attribute>
@@ -23,6 +24,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="menu">
+        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
         <div class="menuitem">
             <a href="<c:url value="/app/dashboard/"/>">Dashboard</a>
         </div>
@@ -37,6 +39,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="content">
+        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
             <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
@@ -68,6 +71,7 @@
 
         <%-- Gefundene Aufgaben --%>
         <c:choose>
+            
             <c:when test="${empty tasks}">
                 <p>
                     Es wurden keine Aufgaben gefunden. 🐈

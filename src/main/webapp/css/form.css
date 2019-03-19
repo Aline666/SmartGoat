@@ -12,9 +12,12 @@ Creative Commons Namensnennung 4.0 International Lizenz.
  * Vertikal gestapelte Formulare
  */
 
-/* Jede Spalte max. 30em breit */
+/* Jede Spalte max. 30em breit und Transparenter Grauer Hintergrund*/
 form.stacked .column {
     max-width: 30em;
+        padding: 2em;
+        background-color: rgba(0, 0, 0, .2)
+
 }
 
 /* Formularelemente maximal breit gestapelt */
