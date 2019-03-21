@@ -45,6 +45,7 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 .tile a {
     color: #606060 !important;
     text-decoration: none !important;
+    
 }
 
 .tile .icon {
@@ -92,3 +93,8 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 .tile.status-all .content:hover {
     background-color: #e6e6e6;
 }
+
+
+
+
+

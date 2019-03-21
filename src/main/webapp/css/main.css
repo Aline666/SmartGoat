@@ -23,11 +23,8 @@ html, body {
 html {
     font-family: 'Quicksand', sans-serif;
     font-size: 14pt;
-
-    background-color: red;
     color: white;
-
-    background-image: url(../img/Tierheim.png);
+    background-image: url(../img/ZiegeHintergrund.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -81,6 +78,7 @@ header, main {
     color: white;
 }
 
+
 /* Menüzeile */
 #menubar .menuitem {
     display: inline-block;
@@ -89,7 +87,7 @@ header, main {
 }
 
 /* Farben für Links */
-a, a:visited {
+.menuitem a, a:visited {
     background-color: white;
     color: green;
     padding: 0.3em;
@@ -99,8 +97,18 @@ a, a:visited {
     box-shadow: 0.2em;
 }
 
-a:hover {
+.icon-login
+{
+  background-color: green;  
+  padding: 0.5em;
+  border: none;
+  color: white;
+  border-radius: 0.2em;
+}
+
+.menuitem a:hover {
     background-color: lightgray;
     color: green;
     text-decoration: underline;
 }
+

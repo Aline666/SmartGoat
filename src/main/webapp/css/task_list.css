@@ -15,11 +15,36 @@ Creative Commons Namensnennung 4.0 International Lizenz.
     margin-bottom: 1rem;
 }
 
+table
+{
+    background-color: rgba(0, 0, 0, .2);
+    padding: 0.5em;
+}
+
+table a:hover
+{
+    color: white;
+    background-color: green;
+}
+
+table a:visited
+{
+    color: white;
+}
+
+
 td, th {
-    
     padding-right: 2em;
     text-align: left;
     vertical-align: baseline;
+}
 
+.icon-search
+{
+  background-color: green;  
+  padding: 0.5em;
+  border: none;
+  color: white;
+  border-radius: 0.2em;
 }
 

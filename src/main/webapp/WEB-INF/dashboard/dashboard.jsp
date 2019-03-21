@@ -23,6 +23,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="menu">
+
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
         </div>
@@ -34,13 +35,15 @@
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
         </div>
+        
     </jsp:attribute>
 
     <jsp:attribute name="content">
+
         <c:choose>
             <c:when test="${empty sections}">
                 <p>
-                    Es wurden keine Dashboard-Kacheln gefunden. 🙈
+                    Es wurden keine Dashboard-Kacheln gefunden.
                 </p>
             </c:when>
             <c:otherwise>
@@ -76,5 +79,6 @@
                 </c:forEach>
             </c:otherwise>
         </c:choose>
+                
     </jsp:attribute>
 </template:base>

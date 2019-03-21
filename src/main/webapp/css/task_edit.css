@@ -12,3 +12,14 @@ Creative Commons Namensnennung 4.0 International Lizenz.
     margin-bottom: 1em;
 }
 
+.content a:hover
+{
+
+    color: white;
+    background-color: green;
+}
+
+.content a:visited
+{
+  color: white;  
+}

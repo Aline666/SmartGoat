@@ -12,6 +12,25 @@ Creative Commons Namensnennung 4.0 International Lizenz.
     margin-bottom: 1em;
 }
 
+/*Buttons Grün*/
+.icon-pencil
+{
+  background-color: green;  
+  padding: 0.5em;
+  border: none;
+  color: white;
+  border-radius: 0.2em;
+}
+
+.icon-trash
+{
+  background-color: green;  
+  padding: 0.5em;
+  border: none;
+  color: white;
+  border-radius: 0.2em;
+}
+
 
 
 
