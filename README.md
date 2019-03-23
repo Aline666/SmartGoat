@@ -4,8 +4,8 @@ Anwendung "SmartGoat"
 Kurzbeschreibung
 ----------------
 
-Bei „Smartgoat“ handelt es sich um eine serverseitige MVC (Model, View, Controller) Anwendung die in der Programmiersprache Java realisiert wurde. 
-Durch die Nutzung der Jakarta Enterprise Edition läuft die Anwendung auf einem Applikationsserver auf welchem die Anwendung läuft. Durch die Nutzung von Jakarte EE erhalten wir gleichzeitig eine Anwendungsorientierte Middleware Spezifikation die uns zusätzliche Funktionen wie eine Benutzer-/Rechteverwaltung oder Datenbankzugriffsfunktionen bietet. Die Jakarta Enterprise Edition ist insbesondere für Java-, sowie Webanwendungen zu nutzen und daher für unser Projekt bestens geeignet.
+Bei „Smartgoat“ handelt es sich um eine serverseitige MVC (Model, View, Controller) Anwendung, die in der Programmiersprache Java realisiert wurde. 
+Durch die Nutzung der Jakarta Enterprise Edition läuft die Anwendung auf einem Applikationsserver. Durch die Nutzung von Jakarta EE erhalten wir gleichzeitig eine Anwendungsorientierte Middleware Spezifikation, die uns zusätzliche Funktionen wie eine Benutzer-/Rechteverwaltung oder Datenbankzugriffsfunktionen bietet. Die Jakarta Enterprise Edition ist insbesondere für Java-, sowie Webanwendungen zu nutzen und daher für unser Projekt bestens geeignet.
 Durch die rein serverseitige Anwendung wird die Anwendungslogik und der HTML-Code rein serverseitig generiert und im Browser dargestellt.
 Die Schnittstelle für den Webservice wird mit Hilfe SOAP erstellt und bietet eine Schnittstelle für den Zugriff auf die Tierübersicht.
 
@@ -28,9 +28,13 @@ Programme:
 -----------------------
 
 Netbeans: Als Entwicklungsumgebung
+
 Github: Als Versionsverwaltung für den Code
+
 TomEE: Als Applikationsserver
+
 Derby: Als SQL Datenbank
+
 SOAP: für die Webservice Schnittstelle
 
 
