@@ -7,11 +7,15 @@
     Dieser Quellcode ist lizenziert unter einer
     Creative Commons Namensnennung 4.0 International Lizenz.
 --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+     
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% request.setAttribute("isAdmin", request.isUserInRole("admin")); %>
 <%@taglib tagdir="/WEB-INF/tags/templates" prefix="template"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+
 
 <template:base>
     <jsp:attribute name="title">
@@ -23,18 +27,25 @@
     </jsp:attribute>
 
     <jsp:attribute name="menu">
-
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/list/"/>">Liste der Aufgaben</a>
         </div>
 
-        <div class="menuitem">
+             <div class="menuitem">
             <a href="<c:url value="/app/tasks/task/new/"/>">Aufgabe anlegen</a>
         </div>
 
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/categories/"/>">Tierkategorien bearbeiten</a>
         </div>
+               
+        
+           <c:if test="${requestScope.isAdmin}">
+        <div class="menuitem">
+            <a href="/Rollenverwaltung/rollenansicht">Rollenverwaltung</a>
+        </div>
+          </c:if>
+        
         
     </jsp:attribute>
 
