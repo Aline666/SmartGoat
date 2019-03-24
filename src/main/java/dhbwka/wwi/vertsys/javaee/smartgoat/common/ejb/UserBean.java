@@ -17,6 +17,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+
+
 /**
  * Spezielle EJB zum Anlegen eines Benutzers und Aktualisierung des Passworts.
  */
@@ -51,10 +53,16 @@ public class UserBean {
             throw new UserAlreadyExistsException("Der Benutzername $B ist bereits vergeben.".replace("$B", username));
         }
 
+
+        
         User user = new User(username, password, firstname, lastname);
-        user.addToGroup("app-user");
+        user.addToGroup("app-user");  
+        
+        
         em.persist(user);
     }
+    
+
 
     /**
      * Passwort ändern (ohne zu speichern)
@@ -63,7 +71,8 @@ public class UserBean {
      * @param newPassword
      * @throws UserBean.InvalidCredentialsException
      */
-    @RolesAllowed("app-user")
+    @RolesAllowed({"app-user","admin"})
+
     public void changePassword(User user, String oldPassword, String newPassword) throws InvalidCredentialsException {
         if (user == null || !user.checkPassword(oldPassword)) {
             throw new InvalidCredentialsException("Benutzername oder Passwort sind falsch.");
@@ -72,21 +81,24 @@ public class UserBean {
         user.setPassword(newPassword);
     }
     
+    
+
     /**
      * Benutzer löschen
      * @param user Zu löschender Benutzer
      */
-    @RolesAllowed("app-user")
+    @RolesAllowed({"app-user","admin"})
     public void delete(User user) {
         this.em.remove(user);
     }
+    
     
     /**
      * Benutzer aktualisieren
      * @param user Zu aktualisierender Benutzer
      * @return Gespeicherter Benutzer
      */
-    @RolesAllowed("app-user")
+    @RolesAllowed({"app-user","admin"})
     public User update(User user) {
         return em.merge(user);
     }

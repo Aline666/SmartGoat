@@ -42,6 +42,7 @@
         -->
         <auth-constraint>
             <role-name>app-user</role-name>
+            <role-name>admin</role-name>
         </auth-constraint>
         
         <!--
