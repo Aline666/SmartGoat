@@ -6,9 +6,6 @@
 
     Dieser Quellcode ist lizenziert unter einer
     Creative Commons Namensnennung 4.0 International Lizenz.
-
-
-
 --%>
 
      
@@ -41,11 +38,11 @@
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/categories/"/>">Tierkategorien bearbeiten</a>
         </div>
-
-                
+               
+        
            <c:if test="${requestScope.isAdmin}">
         <div class="menuitem">
-            <a href="<c:url value="/app/rollenVerwaltung/"/>">Rollenverwaltung</a>
+            <a href="/Rollenverwaltung/rollenansicht">Rollenverwaltung</a>
         </div>
           </c:if>
         
