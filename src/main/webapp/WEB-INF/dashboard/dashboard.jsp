@@ -39,12 +39,16 @@
             <a href="<c:url value="/app/tasks/categories/"/>">Tierkategorien bearbeiten</a>
         </div>
                
+        <c:if test="${requestScope.isAdmin}">
+            <div class="menuitem">
+                <a href="/Rollenverwaltung/rollenansicht">Rollenverwaltung</a>
+            </div>
+        </c:if>
         
-           <c:if test="${requestScope.isAdmin}">
-        <div class="menuitem">
-            <a href="/Rollenverwaltung/rollenansicht">Rollenverwaltung</a>
+        <%-- Menütab für Benutzerkonto anlegen --%>
+         <div class="menuitem">
+            <a href="/benutzerkonto/benutzerkonto">Mein Konto</a>
         </div>
-          </c:if>
         
         
     </jsp:attribute>
