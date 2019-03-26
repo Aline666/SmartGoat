@@ -15,15 +15,22 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
         Benutzerkonto
     </jsp:attribute>
     
-    <%-- Stylesheet einbinden --%>
+    <%-- Stylesheet für Titel einbinden --%>
     <jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/task_edit.css"/>" />
     </jsp:attribute>
     
-    <%-- Menütab für Dashboard anlegen --%>
+    <%-- Menütabs anlegen --%>
     <jsp:attribute name="menu">
+        
+        <%-- Menütab für Dashboard --%>
         <div class="menuitem">
             <a href="<c:url value="/app/dashboard/"/>">Dashboard</a>
+        </div>
+        
+        <%-- Menütab für Konto bearbeiten --%>
+        <div class="menuitem">
+            <a href="<c:url value="/app/Tierdashboard/species/"/>">Tierarten bearbeiten</a>
         </div>
     </jsp:attribute>
     
