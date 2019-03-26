@@ -61,12 +61,12 @@
                     <c:forEach items="${tasks}" var="task">
                         <tr>
                             <td>                              
-                                 <c:out value="${task.username}"/>
+                                 <c:out value="${roles.username}"/>
                                 </a>
                             </td>
                             
                             <td>
-                                <c:out value="${task.groupname}"/>
+                                <c:out value="${roles.groupname}"/>
                             </td>
                             <td>
                                 <div>
