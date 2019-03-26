@@ -8,6 +8,16 @@ Dieser Quellcode ist lizenziert unter einer
 Creative Commons Namensnennung 4.0 International Lizenz.
 */
 
+/*Button für Adminrecht vergrößern*/
+input[type=checkbox]
+{
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+}
+
+
 /* Allgemeines Layout */
 .tile {
     position: relative;

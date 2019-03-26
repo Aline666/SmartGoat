@@ -5,9 +5,13 @@
 */
 package SmartgoatServlet;
 
+import Smartgoat.EJB.RollenBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Category;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Task;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.TaskStatus;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.TaskStatus;
 import java.io.IOException;
@@ -15,6 +19,8 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,127 +40,57 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-@WebServlet(name = "rollenVerw", urlPatterns = {"/rollenVerw"})
+@WebServlet(urlPatterns = {"/app/rollenVerwaltung/"})
 public class RollenVerwaltungServlet extends HttpServlet {
 
 
-/**
- * Eine zu erledigende Aufgabe.
- */
-@Entity
-public class Task implements Serializable {
+    @EJB
+    private CategoryBean categoryBean;
+    
+    @EJB
+    private TaskBean taskBean;
+    
+    @EJB private RollenBean rollenBean;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "task_ids")
-    @TableGenerator(name = "task_ids", initialValue = 0, allocationSize = 50)
-    private long id;
+        // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
+        request.setAttribute("categories", this.categoryBean.findAllSorted());
+        request.setAttribute("statuses", TaskStatus.values());
 
-    @ManyToOne
-    @NotNull(message = "Die Aufgabe muss einem Benutzer geordnet werden.")
-    private User owner;
+        // Suchparameter aus der URL auslesen
+        String searchText = request.getParameter("search_text");
+        String searchCategory = request.getParameter("search_category");
+        String searchStatus = request.getParameter("search_status");
 
-    @ManyToOne
-    private Category category;
+        // Anzuzeigende Aufgaben suchen
+        Category category = null;
+        TaskStatus status = null;
 
-    @Column(length = 50)
-    @NotNull(message = "Die Bezeichnung darf nicht leer sein.")
-    @Size(min = 1, max = 50, message = "Die Bezeichnung muss zwischen ein und 50 Zeichen lang sein.")
-    private String shortText;
+        if (searchCategory != null) {
+            try {
+                category = this.categoryBean.findById(Long.parseLong(searchCategory));
+            } catch (NumberFormatException ex) {
+                category = null;
+            }
+        }
 
-    @Lob
-    @NotNull
-    private String longText;
+        if (searchStatus != null) {
+            try {
+                status = TaskStatus.valueOf(searchStatus);
+            } catch (IllegalArgumentException ex) {
+                status = null;
+            }
 
-    @NotNull(message = "Das Datum darf nicht leer sein.")
-    private Date dueDate;
+        }
 
-    @NotNull(message = "Die Uhrzeit darf nicht leer sein.")
-    private Time dueTime;
+        List<Task> tasks = this.taskBean.search(searchText, category, status);
+        request.setAttribute("tasks", tasks);
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private TaskStatus status = TaskStatus.OPEN;
-
-    //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-    public Task() {
+        // Anfrage an die JSP weiterleiten
+        request.getRequestDispatcher("/WEB-INF/Rollenverwaltung/rollenansicht.jsp").forward(request, response);
     }
-
-    public Task(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime) {
-        this.owner = owner;
-        this.category = category;
-        this.shortText = shortText;
-        this.longText = longText;
-        this.dueDate = dueDate;
-        this.dueTime = dueTime;
-    }
-    //</editor-fold>
-
-    //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getShortText() {
-        return shortText;
-    }
-
-    public void setShortText(String shortText) {
-        this.shortText = shortText;
-    }
-
-    public String getLongText() {
-        return longText;
-    }
-
-    public void setLongText(String longText) {
-        this.longText = longText;
-    }
-
-    public Date getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public Time getDueTime() {
-        return dueTime;
-    }
-
-    public void setDueTime(Time dueTime) {
-        this.dueTime = dueTime;
-    }
-
-    public TaskStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TaskStatus status) {
-        this.status = status;
-    }
-    //</editor-fold>
 }
-}
+

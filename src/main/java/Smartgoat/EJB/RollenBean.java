@@ -45,6 +45,8 @@ public class RollenBean extends EntityBean<Task, Long> {
         
     }
     
+    
+    
     /**
      * Suche nach Aufgaben anhand ihrer Bezeichnung, Kategorie und Status.
      * 
