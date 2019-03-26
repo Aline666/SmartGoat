@@ -39,10 +39,11 @@
             <a href="<c:url value="/app/tasks/categories/"/>">Tierkategorien bearbeiten</a>
         </div>
                
-       
+                  <c:if test="${requestScope.isAdmin}">
             <div class="menuitem">
                  <a href="<c:url value="/app/rollenVerwaltung/"/>">Rollenverwaltung</a>
             </div>
+                  </c:if>
         
         
         <%-- Menütab für Benutzerkonto anlegen --%>
