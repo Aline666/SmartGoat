@@ -50,19 +50,19 @@
                     <thead>
                         <tr>
                             <th>Nutzername:</th>
-                            <th>Aktuelle Berrechtigung</th>
+                            <th>Aktuelle Berechtigung</th>
                             <th>Adminrecht vergeben</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${tasks}" var="task">
+                    <c:forEach items="${groupList}" var="rol">
                         <tr>
                             <td>                              
-                                 <c:out value="${roles.username}"/>
+                                 <c:out value="${groupList.username}"/>
                                 </a>
                             </td>
                             
                             <td>
-                                <c:out value="${roles.groupname}"/>
+                                <c:out value="${groupList.groups}"/>
                             </td>
                             <td>
                                 <div>

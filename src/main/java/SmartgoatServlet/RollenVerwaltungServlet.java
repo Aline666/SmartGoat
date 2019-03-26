@@ -6,6 +6,9 @@
 package SmartgoatServlet;
 
 import Smartgoat.EJB.RollenBean;
+import Smartgoat.EJB.UserRollenBean;
+import Smartgoat.jpa.roles;
+import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.ejb.CategoryBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Category;
@@ -24,51 +27,30 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/app/rollenVerwaltung/"})
 public class RollenVerwaltungServlet extends HttpServlet {
 
+@EJB 
+private UserRollenBean userrollenBean;
+    
+@EJB
+private RollenBean rollenBean;
 
-    @EJB
-    private CategoryBean categoryBean;
-    
-    @EJB
-    private TaskBean taskBean;
-    
-    @EJB private RollenBean rollenBean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
-        request.setAttribute("statuses", TaskStatus.values());
 
-        // Suchparameter aus der URL auslesen
-        String searchText = request.getParameter("search_text");
-        String searchCategory = request.getParameter("search_category");
-        String searchStatus = request.getParameter("search_status");
-
-        // Anzuzeigende Aufgaben suchen
-        Category category = null;
-        TaskStatus status = null;
-
-        if (searchCategory != null) {
-            try {
-                category = this.categoryBean.findById(Long.parseLong(searchCategory));
-            } catch (NumberFormatException ex) {
-                category = null;
-            }
-        }
-
-        if (searchStatus != null) {
-            try {
-                status = TaskStatus.valueOf(searchStatus);
-            } catch (IllegalArgumentException ex) {
-                status = null;
-            }
-
-        }
-
-        List<Task> tasks = this.taskBean.search(searchText, category, status);
-        request.setAttribute("tasks", tasks);
+        
+            List<roles> groupList = (List<roles>) this.rollenBean.getAllGroups();
+            request.setAttribute("nutzerliste", groupList);
+            
+            List<roles> userList = (List<roles>) this.userrollenBean.getAllUser();
+            request.setAttribute("gruppenliste", userList);
+          
+            /*
+            List<roles> groupList = (List<roles>) this.rollenBean.getAllGroups();
+            request.setAttribute("gruppenliste", groupList);
+            
+ */
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/Rollenverwaltung/rollenansicht.jsp").forward(request, response);
