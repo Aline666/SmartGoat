@@ -53,34 +53,27 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Bezeichnung</th>
-                            <th>Kategorie</th>
-                            <th>Eigentümer</th>
-                            <th>Status</th>
+                            <th>Nutzername:</th>
+                            <th>Aktuelle Berrechtigung</th>
                             <th>Adminrecht vergeben</th>
                         </tr>
                     </thead>
                     <c:forEach items="${tasks}" var="task">
                         <tr>
-                            <td>
-                                <a href="<c:url value="/app/tasks/task/${task.id}/"/>">
-                                    <c:out value="${task.shortText}"/>
+                            <td>                              
+                                 <c:out value="${task.username}"/>
                                 </a>
                             </td>
+                            
                             <td>
-                                <c:out value="${task.category.name}"/>
-                            </td>
-                            <td>
-                                <c:out value="${task.owner.username}"/>
-                            </td>
-                            <td>
-                                <c:out value="${task.status.label}"/>
+                                <c:out value="${task.groupname}"/>
                             </td>
                             <td>
                                 <div>
                                   <input type="checkbox" name="user_group" value="J">
                                 </div>
                             </td>
+
                         </tr>
                     </c:forEach>
                 </table>

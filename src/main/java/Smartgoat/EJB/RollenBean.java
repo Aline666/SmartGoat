@@ -38,9 +38,10 @@ public class RollenBean extends EntityBean<Task, Long> {
      * @param username Benutzername
      * @return Alle Aufgaben des Benutzers
      */
-    public List<Task> findByUsername(String username) {
-        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime")
+    public List<Task> findAccountGroup(String username, String groupname) {
+        return em.createQuery("SELECT * FROM SMARTGOAT_USER_GROUP")
                  .setParameter("username", username)
+                .setParameter("groupname", groupname)
                  .getResultList();
         
     }
