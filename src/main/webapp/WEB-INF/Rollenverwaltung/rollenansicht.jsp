@@ -1,8 +1,4 @@
-<%-- 
-    Document   : rollenansicht
-    Created on : 24.03.2019, 13:08:19
-    Author     : a.schaub
---%>
+
 <%-- 
     Document   : rollenansicht
     Created on : 24.03.2019, 13:08:19

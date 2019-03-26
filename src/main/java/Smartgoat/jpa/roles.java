@@ -10,15 +10,26 @@
 package Smartgoat.jpa;
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.TaskStatus;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Eine zu erledigende Aufgabe.
@@ -26,51 +37,119 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "SMARTGOAT_GROUP_ADMINISTRATION")
 public class roles implements Serializable {
-    
+
+
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "role_ids")
-    
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "task_ids")
+    @TableGenerator(name = "task_ids", initialValue = 0, allocationSize = 50)
+    private long id;
 
-    private User groupname;
-    private User username;
+    @ManyToOne
+    @NotNull(message = "Die Aufgabe muss einem Benutzer geordnet werden.")
+    private User owner;
 
+    @ManyToOne
+    private Category category;
+
+    @Column(length = 50)
+    @NotNull(message = "Die Bezeichnung darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Die Bezeichnung muss zwischen ein und 50 Zeichen lang sein.")
+    private String shortText;
+
+    @Lob
+    @NotNull
+    private String longText;
+
+    @NotNull(message = "Das Datum darf nicht leer sein.")
+    private Date dueDate;
+
+    @NotNull(message = "Die Uhrzeit darf nicht leer sein.")
+    private Time dueTime;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private TaskStatus status = TaskStatus.OPEN;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-
-    /**
-     *
-     */
     public roles() {
     }
 
-    public roles(User username, User groupname) {
-        this.username = username;
-        this.groupname = groupname;
+    public roles(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime) {
+        this.owner = owner;
+        this.category = category;
+        this.shortText = shortText;
+        this.longText = longText;
+        this.dueDate = dueDate;
+        this.dueTime = dueTime;
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
-
-
-    public User getUsername() {
-        return username;
+    public long getId() {
+        return id;
     }
 
-    public void setUsername(User username) {
-        this.username = username;
-    }
-    public User getGroupName() {
-        return username;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setGroupName(User groupname) {
-        this.groupname = groupname;
+    public User getOwner() {
+        return owner;
     }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getShortText() {
+        return shortText;
+    }
+
+    public void setShortText(String shortText) {
+        this.shortText = shortText;
+    }
+
+    public String getLongText() {
+        return longText;
+    }
+
+    public void setLongText(String longText) {
+        this.longText = longText;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Time getDueTime() {
+        return dueTime;
+    }
+
+    public void setDueTime(Time dueTime) {
+        this.dueTime = dueTime;
+    }
+
+    public TaskStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
+    }
     //</editor-fold>
-
 
 }
