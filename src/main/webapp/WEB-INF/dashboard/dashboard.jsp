@@ -36,12 +36,16 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Tierkategorien bearbeiten</a>
+            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
         </div>
                
        
             <div class="menuitem">
                  <a href="<c:url value="/app/rollenVerwaltung/"/>">Rollenverwaltung</a>
+            </div>
+        
+            <div class="menuitem">
+                 <a href="<c:url value="/app/Tierdashboard/list/"/>">Tierdashboard</a>
             </div>
         
         
