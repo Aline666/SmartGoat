@@ -39,8 +39,9 @@ public class RollenBean extends EntityBean<roles, Long> {
      */
     @RolesAllowed({"admin", "app-user"})
     public List<roles> getAllGroups(){
-        return this.em.createQuery("SELECT f from User f where f.username like :username")
+        return this.em.createQuery("SELECT f from User f where f.username like :username and f.groups like :groups")
                 .setParameter("username", username)
+                .setParameter("groups", groups)
                 .getResultList();
     }
     

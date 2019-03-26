@@ -54,15 +54,15 @@
                             <th>Adminrecht vergeben</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${roles}" var="rol">
+                    <c:forEach items="${groupList}" var="rol">
                         <tr>
                             <td>                              
-                                 <c:out value="${rol.username}"/>
+                                 <c:out value="${groupList.username}"/>
                                 </a>
                             </td>
                             
                             <td>
-                                <c:out value="${rol.groups}"/>
+                                <c:out value="${groupList.groups}"/>
                             </td>
                             <td>
                                 <div>
