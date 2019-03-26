@@ -1,4 +1,6 @@
-
+ Error parsing included template file:///C:/Users/Nasi/Documents/DHBW/Kurse_19_SS/Verteilte%20Systeme/SmartGoat/Smartgoat/licenseheader.txt
+Found unexpected directive: </#if> on line 7, column 1
+Check whether you have a well-formed if-else block.
 package dhbwka.wwi.vertsys.javaee.smartgoat.account.web;
 
 import java.io.IOException;

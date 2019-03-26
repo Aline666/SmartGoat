@@ -41,11 +41,10 @@
                
         <c:if test="${requestScope.isAdmin}">
             <div class="menuitem">
-                <a href="/app/rollenVerwaltung/">Rollenverwaltung</a>
+                <a href="/Rollenverwaltung/rollenansicht">Rollenverwaltung</a>
             </div>
         </c:if>
         
-
         <%-- Menütab für Benutzerkonto anlegen --%>
          <div class="menuitem">
             <a href="/benutzerkonto/benutzerkonto">Mein Konto</a>
