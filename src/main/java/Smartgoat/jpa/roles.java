@@ -15,28 +15,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * Eine zu erledigende Aufgabe.
  */
 @Entity
+@Table(name = "SMARTGOAT_GROUP_ADMINISTRATION")
 public class roles implements Serializable {
-
+    
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "task_ids")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "role_ids")
+    
 
-    @OneToMany
     private User groupname;
-    @OneToOne
     private User username;
-    @Id
-    private Long id;
+
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
+
+    /**
+     *
+     */
     public roles() {
     }
 
@@ -67,12 +72,5 @@ public class roles implements Serializable {
 
     //</editor-fold>
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 }
