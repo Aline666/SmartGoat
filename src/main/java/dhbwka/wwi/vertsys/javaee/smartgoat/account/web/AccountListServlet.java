@@ -10,11 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Nasi
- */
-
 
 @WebServlet(urlPatterns = {"/app/benutzerkonto/list/"})
 public class AccountListServlet extends HttpServlet {
