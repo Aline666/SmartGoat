@@ -122,7 +122,15 @@ public class AnimalEditServlet extends HttpServlet{
 
         Animal animal = this.getRequestedAnimal(request);
 
-        animal.setAnimalname(animalName);
+        
+
+        
+         if (animalName != null) {
+             
+           animal.setAnimalname(animalName);
+        } else {
+            errors.add("Der Tiername muss angegeben werden!");
+        }
 
         
         if (animalSpecies != null && !animalSpecies.trim().isEmpty()) {
@@ -140,7 +148,7 @@ public class AnimalEditServlet extends HttpServlet{
         if (dueDate != null) {
             animal.setDueDate(dueDate);
         } else {
-            errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
+            errors.add("Das Eingangsdatum muss dem Format dd.mm.yyyy entsprechen.");
         }
 
        
@@ -257,6 +265,10 @@ public class AnimalEditServlet extends HttpServlet{
                 "" + animal.getSpecies().getId()
             });
         }
+        
+        values.put("animal_long_text", new String[]{
+            animal.getLongText()
+        });
 
         values.put("animal_due_date", new String[]{
             WebUtils.formatDate(animal.getDueDate())
@@ -268,12 +280,7 @@ public class AnimalEditServlet extends HttpServlet{
             animal.getStatus().toString()
         });
 
-       
-
-        values.put("animal_long_text", new String[]{
-            animal.getLongText()
-        });
-
+      
         FormValues formValues = new FormValues();
         formValues.setValues(values);
         return formValues;
