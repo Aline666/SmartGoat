@@ -24,26 +24,33 @@ import javax.ejb.Stateless;
 @RolesAllowed({"app-user", "admin"})
 public class RollenBean extends EntityBean<roles, Long> { 
 
-    private Object username;
-    private Object groupname;
-    private Object groups;
+    private String username;
+    private String groupname;
+    private String groups;
    
     public RollenBean() {
         super(roles.class);
     }
     
+    
     /**
      * Alle Gruppennamen in einer Liste zusammenfügen
      * @param username Benutzername
      * @param groupname Gruppenname
+     * @return 
      */
+    
+    
     @RolesAllowed({"admin", "app-user"})
     public List<roles> getAllGroups(){
-        return this.em.createQuery("SELECT f from User f where f.username like :username and f.groups like :groups")
+        return this.em.createQuery("SELECT f from roles f where f.username like :username and f.groupname like :groupname")
                 .setParameter("username", username)
-                .setParameter("groups", groups)
+                .setParameter("groupname", groupname)
                 .getResultList();
     }
+    
+    
+
     
     /*public List<Film> sucheNameUndJahr(
         String name, int vonJahr, int bisJahr) {

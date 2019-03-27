@@ -54,19 +54,19 @@
                             <th>Adminrecht vergeben</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${groupList}" var="rol">
+                    <c:forEach items="${groupList}" var="groupList">
                         <tr>
                             <td>                              
-                                 <c:out value="${groupList.username}"/>
+                                 <c:out value="${groupList.roles.username}"/>
                                 </a>
                             </td>
                             
                             <td>
-                                <c:out value="${groupList.groups}"/>
+                                <c:out value="${groupList.roles.groupname}"/>
                             </td>
                             <td>
                                 <div>
-                                  <input type="checkbox" name="user_group" value="J">
+                                  <input type="checkbox" name=" " value="J">
                                 </div>
                             </td>
 
