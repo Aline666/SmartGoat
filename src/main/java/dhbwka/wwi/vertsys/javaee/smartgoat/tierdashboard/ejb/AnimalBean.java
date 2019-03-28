@@ -38,7 +38,7 @@ public class AnimalBean extends EntityBean<Animal, Long>{
      * @return Alle Aufgaben des Benutzers
      */
     public List<Animal> findBySpecies(Species species) {
-        return em.createQuery("SELECT t FROM Task t WHERE t.species = :species ORDER BY t.dueDate")
+        return em.createQuery("SELECT t FROM Animal t WHERE t.species = :species ORDER BY t.dueDate")
                  .setParameter("species", species)
                  .getResultList();
     }

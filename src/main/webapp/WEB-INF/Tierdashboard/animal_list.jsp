@@ -39,7 +39,7 @@
         <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
-            <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
+     
 
             <select name="search_species">
                 <option value="">Alle Tierarten</option>
@@ -87,7 +87,7 @@
                             <th>Eingangsdatum</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${animals}" var="animal">
+                    <c:forEach items="${animal}" var="animal">
                         <tr>
                             <td>
                                 <a href="<c:url value="/app/Tierdashboard/animal/${animal.id}/"/>">
@@ -101,12 +101,13 @@
                                 <c:out value="${animal.longText}"/>
                             </td>
                             <td>
-                                <c:out value="${animal.status.label}"/>
-                            </td>
-                            <td>
                                 <c:out value="${utils.formatDate(animal.dueDate)}"/>
                                
                             </td>
+                            <td>
+                                <c:out value="${animal.status.label}"/>
+                            </td>
+                            
                         </tr>
                     </c:forEach>
                 </table>
