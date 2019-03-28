@@ -9,9 +9,8 @@
  */
 package Smartgoat.jpa;
 
-import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,35 +33,35 @@ public class roles implements Serializable {
     
     
     @Column(name = "groupname", length = 10)
-    private String groupname;
+    private User groupname;
     
     @Column(name="username", length = 10)
-    private String username;
+    private User username;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public roles() {
     }
 
-    public roles(String username, String groupname) {
+    public roles(User username, User groupname) {
         this.username = username;
         this.groupname = groupname;
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
-    public String getUsername() {
+    public User getUsername() {
         return username;
     }
     
-    public void setUsername(String username) {
+    public void setUsername(User username) {
         this.username = username;
     }
 
-        public String getGroupname() {
+        public User getGroupname() {
         return groupname;
     }
     
-    public void setGroupname(String groupname) {
+    public void setGroupname(User groupname) {
         this.groupname = username;
     }
     

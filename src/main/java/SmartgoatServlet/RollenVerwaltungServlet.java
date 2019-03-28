@@ -30,11 +30,21 @@ private RollenBean rollenBean;
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
+
+        /*
             List<roles> groupList;
             groupList = (List<roles>) this.rollenBean.getAllGroups();
             request.setAttribute("groupList", groupList);
             
+            
+            List<roles> userList = (List<roles>) this.userrollenBean.getAllUser();
+            request.setAttribute("gruppenliste", userList);
+          
+            */
+            List<roles> groupList = (List<roles>) this.rollenBean.getAllGroups();
+            request.setAttribute("groupList", groupList);
+            
+ 
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/Rollenverwaltung/rollenansicht.jsp").forward(request, response);

@@ -57,12 +57,12 @@
                     <c:forEach items="${groupList}" var="groupList">
                         <tr>
                             <td>                              
-                                 <c:out value="${groupList.roles.username}"/>
+                                 <c:out value="${groupList.username}"/>
                                 </a>
                             </td>
                             
                             <td>
-                                <c:out value="${groupList.roles.groupname}"/>
+                                <c:out value="${groupList.groupname}"/>
                             </td>
                             <td>
                                 <div>
