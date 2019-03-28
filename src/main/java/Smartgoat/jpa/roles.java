@@ -10,63 +10,63 @@
 package Smartgoat.jpa;
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.TaskStatus;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * Eine zu erledigende Aufgabe.
  */
 @Entity
+@Table(name = "SMARTGOAT_USER_ADMIN")
 public class roles implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "user_id")
+    @TableGenerator(name = "user_id", initialValue = 0, allocationSize = 50)
+    private long id;
+    
+    
+    @Column(name = "groupname", length = 10)
+    private User groupname;
+    
+    @Column(name="username", length = 10)
+    private User username;
 
-    private static final long serialVersionUID = 1L;
-
-private String username;
-private String groupname;
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public roles() {
     }
 
-    public roles(String username, String groupname) {
+    public roles(User username, User groupname) {
         this.username = username;
         this.groupname = groupname;
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
-    public String getUsername() {
+    public User getUsername() {
         return username;
     }
     
-    public void setUsername(String username) {
+    public void setUsername(User username) {
         this.username = username;
     }
 
-        public String getGroupname() {
-        return username;
+        public User getGroupname() {
+        return groupname;
     }
     
-    public void setGroupname(String groupname) {
-        this.username = username;
+    public void setGroupname(User groupname) {
+        this.groupname = username;
     }
+    
+
+    
+   
 }
 

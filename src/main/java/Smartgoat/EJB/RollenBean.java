@@ -16,46 +16,47 @@ import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Task;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Einfache EJB mit den üblichen CRUD-Methoden für Aufgaben
  */
 @Stateless
 @RolesAllowed({"app-user", "admin"})
-public class RollenBean extends EntityBean<roles, Long> { 
+public class RollenBean extends EntityBean<User, Long> { 
 
     private Object username;
     private Object groupname;
-    private Object groups;
-   
-    public RollenBean() {
-        super(roles.class);
+
+    @PersistenceContext
+    protected EntityManager em;
+    
+
+    protected EntityManager getEntityManager()
+    {
+        return em;
     }
+    public RollenBean() {
+        super(User.class);
+    }
+    
     
     /**
      * Alle Gruppennamen in einer Liste zusammenfügen
      * @param username Benutzername
      * @param groupname Gruppenname
      */
+    
+
     @RolesAllowed({"admin", "app-user"})
     public List<roles> getAllGroups(){
-        return this.em.createQuery("SELECT f from User f where f.username like :username and f.groups like :groups")
+        return this.em.createQuery("SELECT f from roles f where f.username like :username and f.groupname like :groupname")
                 .setParameter("username", username)
-                .setParameter("groups", groups)
+                .setParameter("groupname", groupname)
                 .getResultList();
     }
-    
-    /*public List<Film> sucheNameUndJahr(
-        String name, int vonJahr, int bisJahr) {
-
-            return em.createQuery(
-                        "SELECT f FROM Film f"
-                      + "  WHERE f.name LIKE :name"
-                      + "    AND f.jahr BETWEEN :von AND :bis"
-*/
-
-    
-    }
+}
     
 
     
