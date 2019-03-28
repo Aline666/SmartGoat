@@ -12,10 +12,10 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
     
     <%-- Titel anlegen --%>
     <jsp:attribute name="title">
-        Benutzerkonto
+        Mein Konto
     </jsp:attribute>
-    
-    <%-- Stylesheet für Titel einbinden --%>
+        
+    <%-- Stylesheet einbinden --%>
     <jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/task_edit.css"/>" />
     </jsp:attribute>
@@ -36,25 +36,19 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
     
     <%-- Anlegen des Formulars --%>
     <jsp:attribute name="content">
-        <form method="post" class="stacked">
-            <div class="column">
-                
-                <%-- CSRF-Token für den Schutz des echten Benutzers --%>
-                <input type="hidden" name="csrf_token" value="${csrf_token}">
-                
-                <%-- Eingabefeld Benutzername --%>
-                <label for="task_owner">Benutzername:</label>
-                <div class="side-by-side">
-                    <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
-                </div>
-                
-                <%-- Button zum Abschicken --%>
-                <div class="side-by-side">
-                    <button class="icon-pencil" type="submit" name="action" value="save">
-                        Sichern
-                    </button>
-                </div>
+        <div class="container">
+            <div>
+                Benutzername:
+                <span>${user.username}</span>
             </div>
-        </form>
+            <div>
+                Vorname:
+                <span>${user.vorname}</span>
+            </div>
+            <div>
+                Nachname:
+                <span>${user.nachname}</span>
+            </div>
+             
     </jsp:attribute>
 </template:base>

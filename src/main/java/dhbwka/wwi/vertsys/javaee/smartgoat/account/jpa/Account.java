@@ -1,3 +1,4 @@
+/*
 package dhbwka.wwi.vertsys.javaee.smartgoat.account.jpa;
 
 import java.io.Serializable;
@@ -67,4 +68,4 @@ public class Account implements Serializable {
         return "dhbwka.wwi.vertsys.javaee.smartgoat.account.jpa.Account[ id=" + id + " ]";
     }
     
-}
+}*/
