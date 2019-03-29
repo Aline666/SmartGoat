@@ -36,10 +36,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = "/app/Tierdashboard/animal/*")
 public class AnimalEditServlet extends HttpServlet{
     
-    
   
-
-
     @EJB
     AnimalBean animalBean;
 
@@ -265,22 +262,20 @@ public class AnimalEditServlet extends HttpServlet{
                 "" + animal.getSpecies().getId()
             });
         }
-        
-        values.put("animal_long_text", new String[]{
-            animal.getLongText()
-        });
-
+       
         values.put("animal_due_date", new String[]{
             WebUtils.formatDate(animal.getDueDate())
         });
 
         
-
         values.put("animal_status", new String[]{
             animal.getStatus().toString()
         });
+        
+        values.put("animal_long_text", new String[]{
+            animal.getLongText()
+        });
 
-      
         FormValues formValues = new FormValues();
         formValues.setValues(values);
         return formValues;

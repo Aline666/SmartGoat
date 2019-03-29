@@ -25,7 +25,7 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/Tierdashboard/species/"/>">Konto bearbeiten</a>
+            <a href="<c:url value="/app/benutzerkonto/edit/"/>">Konto bearbeiten</a>
         </div>
     </jsp:attribute>
 
@@ -55,7 +55,7 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
                     <c:forEach items="${user}" var="user">
                         <tr>
                             <td>
-                                <a href="<c:url value="/app/benutzerkonto/konto/${user.username}/"/>">
+                                <a href="<c:url value="/app/benutzerkonto/edit/${user.username}/"/>">
                                     <c:out value="${user.username}"/>
                                 </a>
                             </td>

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet(urlPatterns = {"/app/benutzerkonto/list/"})
+@WebServlet(urlPatterns = {"/app/benutzerkonto/konto/"})
 public class AccountListServlet extends HttpServlet {
 
     @EJB
@@ -33,7 +33,7 @@ public class AccountListServlet extends HttpServlet {
         request.setAttribute("entries", entries);
 
          // Anfrage an dazugerhörige JSP weiterleiten
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/benutzerkonto/benutzerkonto.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/benutzerkonto/benutzerkonto_list.jsp");
         dispatcher.forward(request, response);
         
         // In der Session liegende Fehlermeldung verwerfen, damit wir beim

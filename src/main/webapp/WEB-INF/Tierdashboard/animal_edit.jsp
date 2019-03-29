@@ -54,7 +54,7 @@
                         <option value="">Keine Tierart</option>
 
                         <c:forEach items="${species}" var="species">
-                            <option value="${species.id}" ${animal_form.values["animal_cspecies"][0] == species.id.toString() ? 'selected' : ''}>
+                            <option value="${species.id}" ${animal_form.values["animal_species"][0] == species.id.toString() ? 'selected' : ''}>
                                 <c:out value="${species.name}" />
                             </option>
                         </c:forEach>
@@ -66,7 +66,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="animal_due_date" value="${animal_form.values["animaldue_date"][0]}">
+                    <input type="text" name="animal_due_date" value="${animal_form.values["animal_due_date"][0]}">
                    
                 </div>
 
