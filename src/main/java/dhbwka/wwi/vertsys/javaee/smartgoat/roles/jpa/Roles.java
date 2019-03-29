@@ -23,7 +23,7 @@ import javax.persistence.TableGenerator;
  * Eine zu erledigende Aufgabe.
  */
 @Entity
-@Table(name = "SMARTGOAT_USER_ADMIN")
+@Table(name = "ROLES")
 public class Roles implements Serializable {
 
     @Id
@@ -33,35 +33,36 @@ public class Roles implements Serializable {
     
     
     @Column(name = "groupname", length = 10)
-    private User groupname;
+    private String groupname;
     
     @Column(name="username", length = 10)
-    private User username;
+    private String username;
+
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Roles() {
     }
 
-    public Roles(User username, User groupname) {
+    public Roles(String username, String groupname) {
         this.username = username;
         this.groupname = groupname;
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
-    public User getUsername() {
+    public String getUsername() {
         return username;
     }
     
-    public void setUsername(User username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-        public User getGroupname() {
+        public String getGroupname() {
         return groupname;
     }
     
-    public void setGroupname(User groupname) {
+    public void setGroupname(String groupname) {
         this.groupname = username;
     }
     

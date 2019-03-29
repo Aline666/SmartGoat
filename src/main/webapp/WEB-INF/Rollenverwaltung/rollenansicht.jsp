@@ -49,7 +49,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Nutzername:</th>
+                            <th>Nutzername</th>
                             <th>Aktuelle Berechtigung</th>
                             <th>Adminrecht vergeben</th>
                         </tr>
