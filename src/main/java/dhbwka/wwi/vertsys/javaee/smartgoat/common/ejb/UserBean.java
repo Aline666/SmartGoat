@@ -73,7 +73,7 @@ public class UserBean {
      * @param newPassword
      * @throws UserBean.InvalidCredentialsException
      */
-    @RolesAllowed({"app-user","admin"})
+    @RolesAllowed({"app-user"})
 
     public void changePassword(User user, String oldPassword, String newPassword) throws InvalidCredentialsException {
         if (user == null || !user.checkPassword(oldPassword)) {
@@ -100,7 +100,7 @@ public class UserBean {
      * @param user Zu aktualisierender Benutzer
      * @return Gespeicherter Benutzer
      */
-    @RolesAllowed({"app-user","admin"})
+    @RolesAllowed({"app-user"})
     public User update(User user) {
         return em.merge(user);
     }

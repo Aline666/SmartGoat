@@ -2,11 +2,9 @@
 
 package dhbwka.wwi.vertsys.javaee.smartgoat.account.web;
 
-import dhbwka.wwi.vertsys.javaee.smartgoat.account.ejb.AccountBean;
-import dhbwka.wwi.vertsys.javaee.smartgoat.account.jpa.Account;
+import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.UserBean;
+import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class AccountListServlet extends HttpServlet {
 
     @EJB
-    private AccountBean accountBean;
+    private UserBean userBean;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -29,7 +27,7 @@ public class AccountListServlet extends HttpServlet {
        
         // Alle vorhandenen Einträge aus der Datenbank lesen und im Request
         // Context ablegen, damit sie in der JSP zur Verfügung stehen
-        List<Account> entries = this.accountBean.findAllEntries();
+        User entries = this.userBean.getCurrentUser();
         request.setAttribute("entries", entries);
 
          // Anfrage an dazugerhörige JSP weiterleiten
@@ -62,7 +60,7 @@ public class AccountListServlet extends HttpServlet {
 
         // Neuen Eintrag speichern
         if (fehler.isEmpty()) {
-            this.accountBean.createNewEntry(name);
+          //  this.userBean.createNewEntry(name);
         }
 
         // Browser auffordern, die Seite neuzuladen
