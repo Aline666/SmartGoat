@@ -36,6 +36,6 @@ public class AccountBean extends EntityBean<Account, Long> {
     public void createNewEntry(String name) {
         Account entry = new Account(name);
         em.persist(entry);
-        return em.merge(entry);
+        /*return em.merge(entry);*/
     }
 }
