@@ -1,4 +1,4 @@
-/**
+
 package dhbwka.wwi.vertsys.javaee.smartgoat.account.ejb;
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.account.jpa.Account;
@@ -28,16 +28,14 @@ public class AccountBean extends EntityBean<Account, Long> {
     /**
      * @return Liste mit allen Nutzereinträgen
      */
-   /** public List<Account> findAllEntries() {
+    public List<Account> findAllEntries() {
         return em.createQuery("SELECT e FROM Account e ")
                 .getResultList();
     }
 
-    /*public void createNewEntry(String name) {
+    public void createNewEntry(String name) {
         Account entry = new Account(name);
         em.persist(entry);
         return em.merge(entry);
-    }*/
-/*
+    }
 }
-*/

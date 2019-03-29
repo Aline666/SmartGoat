@@ -39,6 +39,15 @@
 
                     <%-- Eingabefelder --%>
                     
+                    
+                     <label for="signup_username">
+                        Benutzername:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input type="text" name="signup_username" value="${signup_form.values["signup_username"][0]}">
+                    </div>
+                    
                      <label for="signup_firstname">
                         Vorname:
                         <span class="required">*</span>
@@ -56,14 +65,14 @@
                         <input type="text" name="signup_lastname" value="${signup_form.values["signup_lastname"][0]}">
                     </div>
                     
-                    <label for="signup_username">
-                        Benutzername:
+                     <label for="signup_email">
+                        Email:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_username" value="${signup_form.values["signup_username"][0]}">
+                        <input type="text" name="signup_email" value="${signup_form.values["signup_email"][0]}">
                     </div>
-
+                    
                     <label for="signup_password1">
                         Passwort:
                         <span class="required">*</span>
@@ -79,6 +88,9 @@
                     <div class="side-by-side">
                         <input type="password" name="signup_password2" value="${signup_form.values["signup_password2"][0]}">
                     </div>
+                    
+                     
+                    
 
                     <%-- Button zum Abschicken --%>
                     <div class="side-by-side">

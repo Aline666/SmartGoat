@@ -10,6 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
+
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
@@ -46,16 +47,17 @@ public class UserBean {
      * @param firstname
      * @param lastname
      * @param password
+     * @param email
      * @throws UserBean.UserAlreadyExistsException
      */
-    public void signup(String username, String password, String firstname, String lastname) throws UserAlreadyExistsException {
+    public void signup(String username, String password, String firstname,String lastname, String email) throws UserAlreadyExistsException {
         if (em.find(User.class, username) != null) {
             throw new UserAlreadyExistsException("Der Benutzername $B ist bereits vergeben.".replace("$B", username));
         }
 
 
         
-        User user = new User(username, password, firstname, lastname);
+        User user = new User(username, password, firstname, lastname, email);
         user.addToGroup("app-user");  
         
         
