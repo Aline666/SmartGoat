@@ -13,7 +13,7 @@
 <template:base>
 
     <jsp:attribute name="title">
-        Dashboard
+        Rollenverwaltung
     </jsp:attribute>
 
     <jsp:attribute name="head">
