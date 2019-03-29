@@ -3,10 +3,11 @@
     Created on : 24.03.2019, 13:22:10
     Author     : a.schaub
 */
-package SmartgoatServlet;
+package dhbwka.wwi.vertsys.javaee.smartgoat.roles.web;
 
-import Smartgoat.EJB.RollenBean;
-import Smartgoat.jpa.roles;
+
+import dhbwka.wwi.vertsys.javaee.smartgoat.roles.ejb.RoleBean;
+import dhbwka.wwi.vertsys.javaee.smartgoat.roles.jpa.Roles;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -18,12 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet(urlPatterns = {"/app/rollenVerwaltung/"})
-public class RollenVerwaltungServlet extends HttpServlet {
+public class RoleServlet extends HttpServlet {
 
 
     
 @EJB
-private RollenBean rollenBean;
+private RoleBean rollenBean;
 
 
     @Override
@@ -41,7 +42,7 @@ private RollenBean rollenBean;
             request.setAttribute("gruppenliste", userList);
           
             */
-            List<roles> groupList = (List<roles>) this.rollenBean.getAllGroups();
+            List<Roles> groupList = (List<Roles>) this.rollenBean.getAllGroups();
             request.setAttribute("groupList", groupList);
             
  

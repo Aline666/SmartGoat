@@ -7,7 +7,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package Smartgoat.jpa;
+package dhbwka.wwi.vertsys.javaee.smartgoat.roles.jpa;
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import java.io.Serializable;
@@ -24,7 +24,7 @@ import javax.persistence.TableGenerator;
  */
 @Entity
 @Table(name = "SMARTGOAT_USER_ADMIN")
-public class roles implements Serializable {
+public class Roles implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "user_id")
@@ -39,10 +39,10 @@ public class roles implements Serializable {
     private User username;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-    public roles() {
+    public Roles() {
     }
 
-    public roles(User username, User groupname) {
+    public Roles(User username, User groupname) {
         this.username = username;
         this.groupname = groupname;
     }

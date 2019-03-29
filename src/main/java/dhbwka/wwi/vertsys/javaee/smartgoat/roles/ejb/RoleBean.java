@@ -7,9 +7,9 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package Smartgoat.EJB;
+package dhbwka.wwi.vertsys.javaee.smartgoat.roles.ejb;
 
-import Smartgoat.jpa.roles;
+import dhbwka.wwi.vertsys.javaee.smartgoat.roles.jpa.Roles;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.EntityBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Task;
@@ -24,7 +24,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @RolesAllowed({"app-user", "admin"})
-public class RollenBean extends EntityBean<User, Long> { 
+public class RoleBean extends EntityBean<User, Long> { 
 
     private Object username;
     private Object groupname;
@@ -37,7 +37,7 @@ public class RollenBean extends EntityBean<User, Long> {
     {
         return em;
     }
-    public RollenBean() {
+    public RoleBean() {
         super(User.class);
     }
     
@@ -50,8 +50,8 @@ public class RollenBean extends EntityBean<User, Long> {
     
 
     @RolesAllowed({"admin", "app-user"})
-    public List<roles> getAllGroups(){
-        return this.em.createQuery("SELECT f from roles f where f.username like :username and f.groupname like :groupname")
+    public List<Roles> getAllGroups(){
+        return this.em.createQuery("SELECT f from Roles f where f.username like :username and f.groupname like :groupname")
                 .setParameter("username", username)
                 .setParameter("groupname", groupname)
                 .getResultList();
