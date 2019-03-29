@@ -6,6 +6,7 @@
 package dhbwka.wwi.vertsys.javaee.smartgoat.roles.web;
 
 
+import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.smartgoat.roles.ejb.RoleBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.roles.jpa.Roles;
 import java.io.IOException;
@@ -25,6 +26,8 @@ public class RoleServlet extends HttpServlet {
     
 @EJB
 private RoleBean rollenBean;
+
+
 
 
     @Override

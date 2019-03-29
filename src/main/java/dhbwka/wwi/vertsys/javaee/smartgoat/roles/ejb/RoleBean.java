@@ -28,9 +28,11 @@ public class RoleBean extends EntityBean<User, Long> {
 
     private Object username;
     private Object groupname;
+    private Object groups;
 
     @PersistenceContext
     protected EntityManager em;
+ 
     
 
     protected EntityManager getEntityManager()
@@ -46,14 +48,13 @@ public class RoleBean extends EntityBean<User, Long> {
      * Alle Gruppennamen in einer Liste zusammenfügen
      * @param username Benutzername
      * @param groupname Gruppenname
+
      */
     
 
     @RolesAllowed({"admin", "app-user"})
     public List<Roles> getAllGroups(){
-        return this.em.createQuery("SELECT f from Roles f where f.username like :username and f.groupname like :groupname")
-                .setParameter("username", username)
-                .setParameter("groupname", groupname)
+        return this.em.createQuery("SELECT f from Roles f")
                 .getResultList();
     }
 }
