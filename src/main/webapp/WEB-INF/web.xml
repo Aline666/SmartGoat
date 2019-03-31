@@ -67,7 +67,8 @@
             mindestens diese Rolle besitzen, um sich einloggen und neue
             Aufgaben anlegen zu können.
         </description>
-        <role-name>app-user</role-name>
+            <role-name>app-user</role-name>
+            <role-name>admin</role-name>
     </security-role>
     
     <!--

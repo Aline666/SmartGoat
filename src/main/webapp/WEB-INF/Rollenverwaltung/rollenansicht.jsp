@@ -13,7 +13,7 @@
 <template:base>
 
     <jsp:attribute name="title">
-        Dashboard
+        Rollenverwaltung
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -23,10 +23,6 @@
     <jsp:attribute name="menu">
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/list/"/>">Liste der Aufgaben</a>
-        </div>
-
-             <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Aufgabe anlegen</a>
         </div>
 
         <div class="menuitem">
@@ -52,6 +48,7 @@
                             <th>Nutzername</th>
                             <th>Aktuelle Berechtigung</th>
                             <th>Adminrecht vergeben</th>
+                            <th>Adminrecht entziehen</th>
                         </tr>
                     </thead>
                     <c:forEach items="${groupList}" var="groupList">
@@ -64,9 +61,18 @@
                             <td>
                                 <c:out value="${groupList.groupname}"/>
                             </td>
+                                                   
                             <td>
                                 <div>
-                                  <input type="checkbox" name=" " value="J">
+                                    
+                                  <input type="checkbox" path="adminJN" name=" " value="J">
+                                </div>
+                            </td>
+                            
+                            <td>
+                                <div>
+                                    
+                                  <input type="checkbox" path="adminJN" name=" " value="J">
                                 </div>
                             </td>
 
