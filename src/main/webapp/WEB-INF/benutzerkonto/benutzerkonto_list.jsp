@@ -9,70 +9,43 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <template:base>
-    
     <jsp:attribute name="title">
-       Deine Daten
+        Benutzerdaten anzeigen
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/form.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
-        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
         <div class="menuitem">
-            <a href="<c:url value="/app/dashboard/"/>">Dashboard</a>
+            <a href="<c:url value="/app/tasks/list/"/>">Liste der Aufgaben</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/benutzerkonto/edit/"/>">Konto bearbeiten</a>
+            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
         </div>
     </jsp:attribute>
 
-   <jsp:attribute name="content">
-        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
-       
-        <%-- Gefundene Aufgaben --%>
-        <c:choose>
+    <jsp:attribute name="content">
+        <div class="container">
+            <div>
+                Benutzername:
+                <span>${user.username}</span>
+            </div>
+            <div>
+                Vorname:
+                <span>${user.firstname}</span>
+            </div>
+            <div>
+                Nachname:
+                <span>${user.lastname}</span>
+            </div>
+             
             
-            <c:when test="${empty user}">
-                <p>
-                   Irgendwas ist schiefgelaufen. 🐈
-                </p>
-            </c:when>
-            <c:otherwise>
-                <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.smartgoat.common.web.WebUtils"/>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Benutzername</th>
-                            <th>Vorname</th>
-                            <th>Nachname</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <c:forEach items="${user}" var="user">
-                        <tr>
-                            <td>
-                                <a href="<c:url value="/app/benutzerkonto/edit/${user.username}/"/>">
-                                    <c:out value="${user.username}"/>
-                                </a>
-                            </td>
-                            <td>
-                                <c:out value="${user.firstname}"/>
-                            </td>
-                            <td>
-                                <c:out value="${user.lastname}"/>
-                            </td>
-                            <td>
-                                <c:out value="${user.email}"/>
-                            </td>
-                            
-                        </tr>
-                    </c:forEach>
-                </table>
-            </c:otherwise>
-        </c:choose>
+            
+            <a href="<c:url value="/app/profil/edit/"/>" class="greenBtn">Benutzerdaten ändern</a>  
+            <a href="<c:url value="/app/profil/edit/pw/"/>" class="greenBtn">Passwort ändern</a>  
+        </div>
     </jsp:attribute>
 </template:base>

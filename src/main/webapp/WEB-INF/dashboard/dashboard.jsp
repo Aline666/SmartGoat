@@ -50,7 +50,7 @@
         
         <%-- Menütab für Benutzerkonto anlegen --%>
         <div class="menuitem">
-            <a href="<c:url value="/app/benutzerkonto/konto/"/>">Mein Konto</a>
+            <a href="<c:url value="/app/profil/"/>">Mein Konto</a>
         </div>
         
         

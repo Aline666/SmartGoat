@@ -1,6 +1,7 @@
 package dhbwka.wwi.vertsys.javaee.smartgoat.SOAP_Webservice;
 
 
+import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,38 +21,38 @@ public class UserSoap {
             throws UserAlreadyExistsException {
 
         // Sicherstellen, dass es den Benutzer noch nicht gibt
-        if (em.find(SOAP.class, username) != null) {
+        if (em.find(User.class, username) != null) {
             throw new UserAlreadyExistsException("Der Benutzername existiert bereits.");
         }
 
         // Neuen Benutzer erzeugen
-        SOAP soap = new SOAP(username, password);
+        User user = new User(username, password);
 
         for (String group : groups) {
-            soap.addToGroup(group);
+            user.addToGroup(group);
         }
 
-        em.persist(soap);
+        em.persist(user);
     }
 
     /**
      * Anmeldedaten eines Benutzers sowie Benutzergruppenzuordnung und Zugehörigkeit
      * zu einer der übergebenen Benutzergruppen prüfen.
      */
-    public SOAP validateUser(String username, String password, String... groups)
+    public User validateUser(String username, String password, String... groups)
             throws InvalidCredentialsException, AccessRestrictedException {
 
         // Benutzer suchen und Passwort prüfen
-        SOAP soap = em.find(SOAP.class, username);
+        User user = em.find(User.class, username);
         boolean authorize = false;
 
-        if (soap == null || !soap.checkPassword(password)) {
+        if (user == null || !user.checkPassword(password)) {
             throw new InvalidCredentialsException("Benutzername oder Passwort falsch.");
         }
 
         // Zugeordnete Benutzergruppen prüfen, mindestens eine muss vorhanden sein
-        for (String group : groups) {
-            if (soap.groups.contains(group)) {
+           for (String group : groups) {
+            if (user.groups.contains(group)) {
                 authorize = true;
                 break;
             }
@@ -62,7 +63,7 @@ public class UserSoap {
         }
 
         // Alles okay!
-        return soap;
+        return user;
     }
 
     //<editor-fold defaultstate="collapsed" desc="Exceptions">
