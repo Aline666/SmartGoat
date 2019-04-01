@@ -68,6 +68,15 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
                     </div>
                 </td>  
             </tr>
+            
+            <tr>
+                <td>
+                    <div>
+                        E-Mail Adresse:
+                        <span>${user.email}</span>
+                    </div>
+                </td>  
+            </tr>
         </table>
     </jsp:attribute>
 </template:base>

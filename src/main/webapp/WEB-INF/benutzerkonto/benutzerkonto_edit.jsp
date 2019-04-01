@@ -76,6 +76,19 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
                         </c:otherwise>
                     </c:choose>
                     
+                    <label for="profil_email">
+                        E-Mail Adresse:
+                        <span class="required">*</span>
+                    </label>
+                    <c:choose>
+                        <c:when test="${empty profil_form}">
+                            <input type="text" name="profil_email" value="${user.email}">
+                        </c:when>
+                        <c:otherwise>
+                            <input type="text" name="profil_email" value="${profil_form.values['profil_email'][0]}">
+                        </c:otherwise>
+                    </c:choose>
+                    
                     <button type="submit" name="action" value="save">speichern</button>
                 </div>
                 
