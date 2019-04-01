@@ -1,6 +1,7 @@
+/**
+ * Servlet für die Benutzerdaten anzeigen
+ */
 package dhbwka.wwi.vertsys.javaee.smartgoat.account.profil;
-
-
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
@@ -13,12 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet für die Startseite mit dem Übersichts-Dashboard.
- */
+
 @WebServlet(urlPatterns = {"/app/profil/"})
 public class profilViewServlet extends HttpServlet {
-
     
     @EJB
     UserBean userBean;
