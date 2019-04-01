@@ -63,6 +63,7 @@ public class ProfilDatenBearbeiten extends HttpServlet {
      * @throws IOException 
      */
     private void saveChanges(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        
         String benutzerkontoFirstname = request.getParameter("profil_vorname");
         String benutzerkontoLastname = request.getParameter("profil_nachname");
         String benutzerkontoEmail = request.getParameter("profil_email");
