@@ -8,7 +8,6 @@ package dhbwka.wwi.vertsys.javaee.smartgoat.roles.web;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.web.WebUtils;
-import dhbwka.wwi.vertsys.javaee.smartgoat.roles.ejb.RoleBean;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +22,6 @@ import javax.transaction.Transactional;
 @WebServlet(urlPatterns = {"/app/rollenVerwaltung/"})
 public class RoleServlet extends HttpServlet {
 
-    @EJB
-    private RoleBean rollenBean;
 
     @EJB
     private UserBean userBean;

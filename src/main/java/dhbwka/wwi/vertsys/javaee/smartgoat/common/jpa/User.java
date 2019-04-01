@@ -8,7 +8,6 @@
  */
 package dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa;
 
-import dhbwka.wwi.vertsys.javaee.smartgoat.roles.jpa.Roles;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Task;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
