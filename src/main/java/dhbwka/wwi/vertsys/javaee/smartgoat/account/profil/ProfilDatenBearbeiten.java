@@ -1,4 +1,6 @@
-
+/**
+ * Servlet für die Benutzerdaten bearbeiten
+ */
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.ValidationBean;
@@ -11,13 +13,11 @@ import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-    import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet für die Startseite mit dem Übersichts-Dashboard.
- */
+
 @WebServlet(urlPatterns = {"/app/profil/edit/"})
 public class ProfilDatenBearbeiten extends HttpServlet {
 
@@ -34,8 +34,6 @@ public class ProfilDatenBearbeiten extends HttpServlet {
         User user = userBean.getCurrentUser();
         request.setAttribute("user", user);
         
-        
-
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/benutzerkonto/benutzerkonto_edit.jsp").forward(request, response);
     }
@@ -65,14 +63,16 @@ public class ProfilDatenBearbeiten extends HttpServlet {
      * @throws IOException 
      */
     private void saveChanges(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        String BenutzerkontoUsername = request.getParameter("profil_username");
-        String BenutzerkontoFirstname = request.getParameter("profil_vorname");
-        String BenutzerkontoLastname = request.getParameter("profil_nachname");
+        
+        String benutzerkontoFirstname = request.getParameter("profil_vorname");
+        String benutzerkontoLastname = request.getParameter("profil_nachname");
+        String benutzerkontoEmail = request.getParameter("profil_email");
         
         User user = userBean.getCurrentUser();
         
-        user.setFirstname(BenutzerkontoFirstname);
-        user.setLastname(BenutzerkontoLastname);
+        user.setFirstname(benutzerkontoFirstname);
+        user.setLastname(benutzerkontoLastname);
+        user.setEmail(benutzerkontoEmail);
         
         // Eingaben prüfen
         List<String> errors = this.validationBean.validate(user);

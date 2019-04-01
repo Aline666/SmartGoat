@@ -1,7 +1,5 @@
 <%-- 
-    Document   : benutzerkonto_edit
-    Created on : Mar 29, 2019, 1:03:14 PM
-    Author     : laurahetzel
+Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -11,21 +9,30 @@
 
 <template:base>
     <jsp:attribute name="title">
+        <%-- Festlegen des Titels im Header --%>
          Benutzerpasswort ändern
     </jsp:attribute>
 
     <jsp:attribute name="head">
+        <%-- Stylesheet einbinden --%>
         <link rel="stylesheet" href="<c:url value="/css/form.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
+        <%-- Menü anpassen --%>
+        <%-- Zurück zum Dashboard --%>
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste der Aufgaben</a>
+            <a href="<c:url value="/app/dashboard/"/>">Dashboard</a>
         </div>
 
-
+        <%-- Zurück zum Profil --%>
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
+            <a href="<c:url value="/app/profil/"/>">Mein Konto</a>
+        </div>
+        
+        <%-- Zurück zum Konto bearbeiten --%>
+        <div class="menuitem">
+            <a href="<c:url value="/app/profil/edit/"/>">Profil bearbeiten</a>
         </div>
     </jsp:attribute>
 
@@ -63,15 +70,10 @@
                     <ul class="errors">
                         <c:forEach items="${profil_form.errors}" var="error">
                             <li>${error}</li>
-                            </c:forEach>
+                        </c:forEach>
                     </ul>
                 </c:if>
-            </form>
-                   
-                
-            <a href="<c:url value="/app/profil/"/>" class="greenBtn">Zum Benutzerprofil</a> 
-            <a href="<c:url value="/app/profil/edit/"/>" class="greenBtn">Profil bearbeiten</a> 
-            
+            </form>         
         </div>
     </jsp:attribute>
 </template:base>
