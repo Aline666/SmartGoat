@@ -8,6 +8,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa;
 
+import dhbwka.wwi.vertsys.javaee.smartgoat.roles.jpa.Roles;
 import dhbwka.wwi.vertsys.javaee.smartgoat.tasks.jpa.Task;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
@@ -51,7 +52,8 @@ public class User implements Serializable {
   
     
     public User(String username, String password1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.username = username;
+        this.passwordHash = this.hashPassword(password1);
     }
     
     public class Password {
@@ -65,17 +67,17 @@ public class User implements Serializable {
     @NotNull(message = "Das Passwort darf nicht leer sein.")
     private String passwordHash;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "SMARTGOAT_USER_GROUP",
-            joinColumns = @JoinColumn(name = "USERNAME")
-    )
+            joinColumns = @JoinColumn(name = "USERNAME"))
     @Column(name = "GROUPNAME")
-    List<String> groups = new ArrayList<>();
+    private List<String> groups = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     List<Task> tasks = new ArrayList<>();
-
+    
+        
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
     }
@@ -254,3 +256,4 @@ public class User implements Serializable {
     //</editor-fold>
 
 }
+
