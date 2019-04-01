@@ -10,6 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
@@ -41,6 +42,14 @@ public class UserBean {
         return this.em.find(User.class, this.ctx.getCallerPrincipal().getName());
     }
 
+    public List<User> findAll() {
+        return em.createQuery("SELECT u FROM User u ORDER BY u.username").getResultList();
+    }
+    
+    public User findByUsername(String username) {
+        return em.find(User.class, username);
+    }
+    
     /**
      *
      * @param username

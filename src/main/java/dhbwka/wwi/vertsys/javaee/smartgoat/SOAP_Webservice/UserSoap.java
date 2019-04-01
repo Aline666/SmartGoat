@@ -52,7 +52,7 @@ public class UserSoap {
 
         // Zugeordnete Benutzergruppen prüfen, mindestens eine muss vorhanden sein
            for (String group : groups) {
-            if (user.groups.contains(group)) {
+            if (user.getGroups().contains(group)) {
                 authorize = true;
                 break;
             }
@@ -82,8 +82,8 @@ public class UserSoap {
      */
     public class InvalidCredentialsException extends Exception {
 
-        private InvalidCredentialsException(String benutzername_oder_Passwort_falsch) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        private InvalidCredentialsException(String message) {
+            super(message);
         }
        
     }
@@ -93,8 +93,8 @@ public class UserSoap {
      */
     public class AccessRestrictedException extends Exception {
 
-        private AccessRestrictedException(String sie_sind_hierfür_nicht_berechtigt) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        private AccessRestrictedException(String message) {
+            super(message);
         }
        
     }

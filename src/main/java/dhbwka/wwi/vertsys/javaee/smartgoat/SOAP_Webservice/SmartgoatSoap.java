@@ -28,7 +28,7 @@ public class SmartgoatSoap {
             @WebParam(name = "password") String password)
             throws UserSoap.UserAlreadyExistsException {
 
-        this.userSoap.signup(username, password, "soap-user");
+        this.userSoap.signup(username, password, "app-user");
         return "OK";
     }
 

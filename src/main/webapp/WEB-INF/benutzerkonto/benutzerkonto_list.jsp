@@ -27,25 +27,46 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
         </div>
     </jsp:attribute>
 
+
     <jsp:attribute name="content">
+        <table>
+            <tr>
+                <td>
+            
         <div class="container">
             <div>
                 Benutzername:
                 <span>${user.username}</span>
             </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
             <div>
                 Vorname:
                 <span>${user.firstname}</span>
             </div>
+            
+        </td>
+    </tr>
+    
+    <tr>
+        
+        <td>
             <div>
                 Nachname:
                 <span>${user.lastname}</span>
             </div>
-             
-            
+        </td>  
+    </tr>
+    
+    <tr> <td>
             
             <a href="<c:url value="/app/profil/edit/"/>" class="greenBtn">Benutzerdaten ändern</a>  
+        </td> </tr>
+    <tr> <td>
             <a href="<c:url value="/app/profil/edit/pw/"/>" class="greenBtn">Passwort ändern</a>  
+        </td> </tr>
         </div>
     </jsp:attribute>
 </template:base>

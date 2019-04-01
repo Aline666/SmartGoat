@@ -55,13 +55,13 @@ public class RoleBean extends EntityBean<User, Long> {
     
                 
     
-
+/*
     @RolesAllowed({"admin", "app-user"})
     public List<Roles> getAllGroups(){
         return this.em.createQuery("SELECT f from Roles f")
                 .getResultList();
     }
-    
+  */  
     
     /*
          @RolesAllowed({"admin", "app-user"})

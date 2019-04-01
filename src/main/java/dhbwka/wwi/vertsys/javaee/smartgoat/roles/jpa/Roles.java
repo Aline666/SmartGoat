@@ -103,7 +103,6 @@ public class Roles implements Serializable {
     }
 
     public void setAdminJN(Boolean adminJN) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 */
