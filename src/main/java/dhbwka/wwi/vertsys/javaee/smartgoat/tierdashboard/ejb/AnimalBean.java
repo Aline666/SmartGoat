@@ -38,7 +38,7 @@ public class AnimalBean extends EntityBean<Animal, Long>{
      * @return Alle Aufgaben des Benutzers
      */
     public List<Animal> findBySpecies(Species species) {
-        return em.createQuery("SELECT t FROM Animal t WHERE t.species = :species ORDER BY t.dueDate")
+        return em.createQuery("SELECT t FROM Animal t WHERE t.species = :species")
                  .setParameter("species", species)
                  .getResultList();
     }
@@ -61,10 +61,7 @@ public class AnimalBean extends EntityBean<Animal, Long>{
         CriteriaQuery<Animal> query = cb.createQuery(Animal.class);
         Root<Animal> from = query.from(Animal.class);
         query.select(from);
-
-        // ORDER BY dueDate, dueTime
-        query.orderBy(cb.asc(from.get("dueDate")));
-       
+        
         Predicate p = cb.conjunction();
         
         

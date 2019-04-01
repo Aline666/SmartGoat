@@ -82,12 +82,12 @@
                         <tr>
                             <th>Name</th>
                             <th>Tierart</th>
-                            <th>Medizinische Informationen</th>
-                            <th>Status</th>
                             <th>Eingangsdatum</th>
+                            <th>Status</th>
+                            <th>Medizinische Informationen</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${animal}" var="animal">
+                    <c:forEach items="${animals}" var="animal">
                         <tr>
                             <td>
                                 <a href="<c:url value="/app/Tierdashboard/animal/${animal.id}/"/>">
@@ -98,16 +98,18 @@
                                 <c:out value="${animal.species.name}"/>
                             </td>
                             <td>
-                                <c:out value="${animal.longText}"/>
-                            </td>
-                            <td>
-                                <c:out value="${utils.formatDate(animal.dueDate)}"/>
+                                <c:out value="${utils.formatDate(animal.getDueDate())}"/>
                                
                             </td>
+                            
                             <td>
                                 <c:out value="${animal.status.label}"/>
                             </td>
                             
+                            <td>
+                                <c:out value="${animal.longText}"/>
+                            </td>
+                         
                         </tr>
                     </c:forEach>
                 </table>

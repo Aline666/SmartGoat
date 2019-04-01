@@ -41,14 +41,8 @@ public class Animal implements Serializable{
 
     @ManyToOne
     private Species species;
+   
     
-
-    @Column(length = 100)
-    @NotNull(message = "Die medizinischen Informationen dürfen nicht leer sein.")
-    @Size(min = 3, max = 10, message = "Die medizinischen Informationen müssen zwischen drei und 100 Zeichen lang sein.")
-    private String longText;
-
-
     @NotNull(message = "Das Eingansdatum darf nicht leer sein.")
     private Date dueDate;
 
@@ -56,23 +50,26 @@ public class Animal implements Serializable{
     @Enumerated(EnumType.STRING)
     @NotNull
     private AnimalStatus status = AnimalStatus.GeradeEingetroffen;
+    
+     @Column(length = 100)
+    @NotNull(message = "Die medizinischen Informationen dürfen nicht leer sein.")
+    @Size(min = 3, max = 10, message = "Die medizinischen Informationen müssen zwischen drei und 100 Zeichen lang sein.")
+    private String longText;
 
-    public Animal(long id, String animalname, Species species, String longText, Date dueDate) {
+     
+    public Animal(long id, String animalname, Species species, Date dueDate, String longText) {
         this.id = id;
         this.animalname = animalname;
         this.species = species;
-        this.longText = longText;
         this.dueDate = dueDate;
+        this.longText = longText;
+        
     }
 
     public Animal() {
     }
     
-    
-    
-    
-    
-
+   
     public long getId() {
         return id;
     }

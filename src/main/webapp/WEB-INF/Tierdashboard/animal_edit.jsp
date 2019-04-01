@@ -31,9 +31,7 @@
             <a href="<c:url value="/app/Tierdashboard/list/"/>">Tierdashboard</a>
         </div>
         
-        <div class="menuitem">
-            <a href="<c:url value="/app/Tierdashboard/list/"/>">Liste</a>
-        </div>
+    
     </jsp:attribute>
 
     <jsp:attribute name="content">
