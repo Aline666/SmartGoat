@@ -1,8 +1,7 @@
-<%-- 
-    Document   : benutzerkonto_edit
-    Created on : Mar 29, 2019, 1:03:14 PM
-    Author     : laurahetzel
+<%--
+Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib tagdir="/WEB-INF/tags/templates" prefix="template"%>
@@ -11,21 +10,30 @@
 
 <template:base>
     <jsp:attribute name="title">
+        <%-- Festlegen des Titels im Header --%>
         Benutzerdaten bearbeiten
     </jsp:attribute>
 
     <jsp:attribute name="head">
+        <%-- Stylesheet einbinden --%>
         <link rel="stylesheet" href="<c:url value="/css/form.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
+        <%-- Menü anpassen --%>
+        <%-- Zurück zum Dashboard --%>
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste der Aufgaben</a>
+            <a href="<c:url value="/app/dashboard/"/>">Dashboard</a>
         </div>
 
-
+        <%-- Zurück zum Profil --%>
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
+            <a href="<c:url value="/app/profil/"/>">Mein Konto</a>
+        </div>
+        
+        <%-- Weiter zum Passwort ändern --%>
+        <div class="menuitem">
+            <a href="<c:url value="/app/profil/edit/pw/"/>">Passwort ändern</a>
         </div>
     </jsp:attribute>
 
@@ -54,6 +62,7 @@
                             <input type="text" name="profil_vorname" value="${profil_form.values['profil_vorname'][0]}">
                         </c:otherwise>
                     </c:choose>
+                            
                     <label for="profil_nachname">
                         Nachname:
                         <span class="required">*</span>
@@ -75,15 +84,10 @@
                     <ul class="errors">
                         <c:forEach items="${profil_form.errors}" var="error">
                             <li>${error}</li>
-                            </c:forEach>
+                        </c:forEach>
                     </ul>
                 </c:if>
-            </form>
-              
-                
-            <a href="<c:url value="/app/profil/"/>" class="greenBtn">zum Benutzerprofil</a> 
-            <a href="<c:url value="/app/profil/edit/pw/" />" class="greenBtn">Passwort ändern</a> 
-            
+            </form>     
         </div>
     </jsp:attribute>
 </template:base>
