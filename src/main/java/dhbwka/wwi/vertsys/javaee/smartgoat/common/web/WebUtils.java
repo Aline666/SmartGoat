@@ -76,6 +76,10 @@ public class WebUtils {
      * @return String für die Ausgabe
      */
     public static String formatDate(Date date) {
+        if (date == null) {
+            return "null";
+        }
+        
         return DATE_FORMAT.format(date);
     }
 
@@ -86,6 +90,10 @@ public class WebUtils {
      * @return String für die Ausgabe
      */
     public static String formatTime(Time time) {
+        if (time == null) {
+            return "null";
+        }
+        
         return TIME_FORMAT.format(time);
     }
 

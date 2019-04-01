@@ -42,8 +42,8 @@ public class Species implements Serializable{
     @OneToMany(mappedBy = "species", fetch = FetchType.LAZY)
     List<Animal> animal = new ArrayList<>();
 
-    public Species( String name) {
-        this.id = id;
+    public Species(String name) {
+     
         this.name = name;
     }
 

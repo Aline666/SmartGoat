@@ -112,9 +112,11 @@ public class AnimalEditServlet extends HttpServlet{
         
         String animalName = request.getParameter("animal_name");
         String animalSpecies = request.getParameter("animal_species");
-        String animalLongText = request.getParameter("animal_long_text");
         String animalDueDate = request.getParameter("animal_due_date");
         String animalStatus = request.getParameter("animal_status");
+        String animalLongText = request.getParameter("animal_long_text");
+        
+      
        
 
         Animal animal = this.getRequestedAnimal(request);
@@ -214,8 +216,7 @@ public class AnimalEditServlet extends HttpServlet{
         // Zunächst davon ausgehen, dass ein neuer Satz angelegt werden soll
         Animal animal = new Animal();
         
-        animal.setDueDate(new Date(System.currentTimeMillis()));
-        
+  
 
         // ID aus der URL herausschneiden
         String animalId = request.getPathInfo();

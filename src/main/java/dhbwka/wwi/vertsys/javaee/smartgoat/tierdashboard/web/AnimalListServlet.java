@@ -67,8 +67,8 @@ public class AnimalListServlet extends HttpServlet{
 
         }
 
-        List<Animal> animal = this.animalBean.search(species, status);
-        request.setAttribute("animal", animal);
+        List<Animal> animals = this.animalBean.search(species, status);
+        request.setAttribute("animals", animals);
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/Tierdashboard/animal_list.jsp").forward(request, response);
