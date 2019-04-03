@@ -53,7 +53,7 @@ public class Animal implements Serializable{
     
      @Column(length = 100)
     @NotNull(message = "Die medizinischen Informationen dürfen nicht leer sein.")
-    @Size(min = 3, max = 10, message = "Die medizinischen Informationen müssen zwischen drei und 100 Zeichen lang sein.")
+    @Size(min = 1, max = 1000, message = "Die medizinischen Informationen müssen zwischen einem und 100 Zeichen lang sein.")
     private String longText;
 
      

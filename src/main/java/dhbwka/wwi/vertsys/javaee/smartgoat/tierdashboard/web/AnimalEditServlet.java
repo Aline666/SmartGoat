@@ -159,7 +159,14 @@ public class AnimalEditServlet extends HttpServlet{
         }
 
         
-        animal.setLongText(animalLongText);
+        
+        
+        if (animalLongText != null) {
+             
+           animal.setLongText(animalLongText);
+        } else {
+            errors.add("Es müssen medizinische Infos angegeben werden!");
+        }
 
         this.validationBean.validate(animal, errors);
 
