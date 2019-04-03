@@ -9,6 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb;
 
+
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
 import java.util.List;
 
@@ -64,15 +65,29 @@ public class UserBean {
             throw new UserAlreadyExistsException("Der Benutzername $B ist bereits vergeben.".replace("$B", username));
         }
 
-
-        
         User user = new User(username, password, firstname, lastname, email);
         user.addToGroup("app-user");  
-        
         
         em.persist(user);
     }
     
+    
+    public void validateUser(String username, String password)
+            throws InvalidCredentialsException, AccessRestrictedException, InvalidCredentialsException {
+
+        // Benutzer suchen und Passwort prüfen
+        User user = em.find(User.class, username);
+     
+
+        if (user == null || !user.checkPassword(password)) {
+            throw new InvalidCredentialsException("Benutzername oder Passwort falsch.");
+        }
+
+        // Zugeordnete Benutzergruppen prüfen, mindestens eine muss vorhanden sein
+          
+        // Alles okay!
+     
+    }
 
 
     /**
@@ -112,6 +127,12 @@ public class UserBean {
     @RolesAllowed({"app-user"})
     public User update(User user) {
         return em.merge(user);
+    }
+
+    public static class AccessRestrictedException extends Exception {
+
+        public AccessRestrictedException() {
+        }
     }
 
     /**
