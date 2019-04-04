@@ -66,8 +66,7 @@
                     </div>
                     
                      <label for="signup_email">
-                        Email:
-                        <span class="required">*</span>
+                        E-Mail:
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="signup_email" value="${signup_form.values["signup_email"][0]}">
@@ -105,7 +104,7 @@
                     <ul class="errors">
                         <c:forEach items="${signup_form.errors}" var="error">
                             <li>${error}</li>
-                            </c:forEach>
+                        </c:forEach>
                     </ul>
                 </c:if>
             </form>

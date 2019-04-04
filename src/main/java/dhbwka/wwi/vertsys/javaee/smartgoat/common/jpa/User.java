@@ -46,22 +46,22 @@ public class User implements Serializable {
     private String username;
     
     @Column(name = "FIRSTNAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Vorname muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Vorname darf nicht leer sein.")
     private String firstname;
     
     @Column(name = "LASTNAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Nachname muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Nachname darf nicht leer sein.")
     private String lastname;
     
-    @Column(name = "EMAIL", length = 64)
-    @NotNull(message = "Das E-Mail-Feld darf nicht leer sein.")
     private String email;
   
     
-    public User(String username, String password1) {
+   /* public User(String username, String password1) {
         this.username = username;
         this.passwordHash = this.hashPassword(password1);
-    }
+    } */
     
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
@@ -77,7 +77,8 @@ public class User implements Serializable {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "SMARTGOAT_USER_GROUP",
-            joinColumns = @JoinColumn(name = "USERNAME"))
+            joinColumns = @JoinColumn(name = "USERNAME")
+    )
     @Column(name = "GROUPNAME")
     private List<String> groups = new ArrayList<>();
 
@@ -102,11 +103,11 @@ public class User implements Serializable {
 
     public User(String username, String password, String firstname, String lastname, String email) {
         this.username = username;
-        this.password.password = password;
-        this.passwordHash = this.hashPassword(password);
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email; 
+        this.password.password = password;
+        this.passwordHash = this.hashPassword(password);   
     }
     
     

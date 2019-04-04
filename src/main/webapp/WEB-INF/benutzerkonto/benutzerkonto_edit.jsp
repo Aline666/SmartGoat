@@ -78,7 +78,6 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
                     
                     <label for="profil_email">
                         E-Mail Adresse:
-                        <span class="required">*</span>
                     </label>
                     <c:choose>
                         <c:when test="${empty profil_form}">
