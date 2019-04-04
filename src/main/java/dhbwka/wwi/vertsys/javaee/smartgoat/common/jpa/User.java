@@ -42,11 +42,19 @@ public class User implements Serializable {
     @Id
     @Column(name = "USERNAME", length = 64)
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
-    @NotNull(message = "Der Benutzername darf nicht leer sein.")
+    @NotNull(message = "Der Benutzername darf nicht leer sein.")   
     private String username;
     
+    @Column(name = "FIRSTNAME", length = 64)
+    @NotNull(message = "Der Vorname darf nicht leer sein.")
     private String firstname;
+    
+    @Column(name = "LASTNAME", length = 64)
+    @NotNull(message = "Der Nachname darf nicht leer sein.")
     private String lastname;
+    
+    @Column(name = "EMAIL", length = 64)
+    @NotNull(message = "Das E-Mail-Feld darf nicht leer sein.")
     private String email;
   
     
@@ -92,14 +100,13 @@ public class User implements Serializable {
      */
     
 
-    public User(String username, String password,String firstname, String lastname, String email) {
+    public User(String username, String password, String firstname, String lastname, String email) {
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
         this.firstname = firstname;
         this.lastname = lastname;
-        this.email = email;
-       
+        this.email = email; 
     }
     
     
