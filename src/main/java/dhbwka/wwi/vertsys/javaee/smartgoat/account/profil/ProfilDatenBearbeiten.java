@@ -34,6 +34,8 @@ public class ProfilDatenBearbeiten extends HttpServlet {
         User user = userBean.getCurrentUser();
         request.setAttribute("user", user);
         
+         // Alte Fehlermeldungen löschen
+        request.getSession().removeAttribute("profil_form");
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/benutzerkonto/benutzerkonto_edit.jsp").forward(request, response);
     }
@@ -82,6 +84,7 @@ public class ProfilDatenBearbeiten extends HttpServlet {
         if (errors.isEmpty()) {
             userBean.update(user);
             response.sendRedirect(WebUtils.appUrl(request, "/app/profil/"));
+
         }else{
             // Fehler: Formuler erneut anzeigen
             FormValues formValues = new FormValues();
@@ -93,6 +96,8 @@ public class ProfilDatenBearbeiten extends HttpServlet {
             
             response.sendRedirect(request.getRequestURI());
         }
+        
+
         
     }
     

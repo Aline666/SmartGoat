@@ -32,9 +32,6 @@ public class ProfilEditPasswort extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //User user = userBean.getCurrentUser();
-        //request.setAttribute("user", user);
-        
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/benutzerkonto/benutzerkonto_edit_Pw.jsp").forward(request, response);
     }
@@ -88,20 +85,22 @@ public class ProfilEditPasswort extends HttpServlet {
         }
         
         
+        
         if (errors.isEmpty()) {
             userBean.update(user);
             response.sendRedirect(WebUtils.appUrl(request, "/app/profil/"));
+
+
         }else{
             // Fehler: Formuler erneut anzeigen
             FormValues formValues = new FormValues();
             formValues.setValues(request.getParameterMap());
-            formValues.setErrors(errors);
-            
+            formValues.setErrors(errors);            
             HttpSession session = request.getSession();
-            session.setAttribute("profil_form", formValues);
-            
+            session.setAttribute("profil_form", formValues);          
             response.sendRedirect(request.getRequestURI());
         }
+
         
     }
 

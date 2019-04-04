@@ -67,12 +67,16 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
                 
                 <%-- Fehlermeldungen --%>
                 <c:if test="${!empty profil_form.errors}">
+                                      
                     <ul class="errors">
                         <c:forEach items="${profil_form.errors}" var="error">
                             <li>${error}</li>
                         </c:forEach>
+                            
                     </ul>
+                    
                 </c:if>
+                
             </form>         
         </div>
     </jsp:attribute>
