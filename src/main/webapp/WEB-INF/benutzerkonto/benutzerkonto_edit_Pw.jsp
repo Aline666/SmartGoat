@@ -62,6 +62,7 @@ Erstellung eines Benuterkontos zur Verwaltung der eigenen Benutzerdaten
                     </label>
                     <input type="password" name="pw_new2">
 
+                    <%-- Speichern-Button --%>
                     <button type="submit" name="action" value="save">Änderung speichern</button>
                 </div>
                 

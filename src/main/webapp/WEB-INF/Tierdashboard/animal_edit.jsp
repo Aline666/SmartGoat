@@ -41,12 +41,18 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
-                <label for="animal_name">Tiername:</label>
+                <label for="animal_name">
+                    Tiername:
+                    <span class="required">*</span>
+                </label>
                 <div class="side-by-side">
                     <input type="text" name="animal_name" value="${animal_form.values["animal_name"][0]}" >
                 </div>
 
-                <label for="animal_species">Tierart:</label>
+                <label for="animal_species">
+                    Tierart:
+                    <span class="required">*</span>
+                </label>
                 <div class="side-by-side">
                     <select name="animal_species">
                         <option value="">Keine Tierart</option>
@@ -84,6 +90,7 @@
 
                 <label for="animal_long_text">
                     Medizinische Informationen:
+                    <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
                     <textarea name="animal_long_text"><c:out value="${animal_form.values['animal_long_text'][0]}"/></textarea>
