@@ -3,6 +3,8 @@ package dhbwka.wwi.vertsys.javaee.smartgoat.SOAP_Webservice;
 
 
 import dhbwka.wwi.vertsys.javaee.smartgoat.common.ejb.UserBean;
+import dhbwka.wwi.vertsys.javaee.smartgoat.common.jpa.User;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -51,6 +53,11 @@ public class SmartgoatSoap {
         return "OK";
     }
     
+     @WebMethod
+     @WebResult (name="name")
+      public List<User> findAll() {
+      return this.userBean.findAll();
+    }
     /**
      * Beispiel für eine geschützte Methode. Erfordert, dass der Client im
      * SOAP-Header die Felder "username" und "password" sendet.
